@@ -1,13 +1,3 @@
-# Expo Router Example
-
-Use [`expo-router`](https://docs.expo.dev/router/introduction/) to build native navigation using files in the `app/` directory.
-
-## 🚀 How to use
-
-```sh
-npx create-expo-app -e with-router
-```
-
-## 📝 Notes
-
-- [Expo Router: Docs](https://docs.expo.dev/router/introduction/)
+# To do list app 📝
+Created with [React Native](https://reactnative.dev/) and [Expo](https://docs.expo.dev/). This is my second project, the checkbar is not works yet, but you can add some task and delete task.
+Soon I will add function for checkbar and maybe change background features using ur own image. 
