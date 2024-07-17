@@ -57,12 +57,9 @@ const Home = () => {
               <View style={styles.item}>
                 {taskItems.map((item, index) => {
                   return (
-                    <TouchableOpacity
-                      key={index}
-                      onPress={() => completeTask(index)}
-                    >
-                      <Task text={item} />
-                    </TouchableOpacity>
+                    <View key={index}>
+                      <Task text={item} onDelete={() => completeTask(index)} />
+                    </View>
                   );
                 })}
               </View>
@@ -80,12 +77,12 @@ const Home = () => {
                 value={task}
                 onChangeText={(text) => setTask(text)}
               />
-                <FontAwesome
-                  name="plus-square-o"
-                  size={24}
-                  color="white"
-                  onPress={() => handleAddTask()}
-                />
+              <FontAwesome
+                name="plus-square-o"
+                size={24}
+                color="white"
+                onPress={() => handleAddTask()}
+              />
             </KeyboardAvoidingView>
           </ScrollView>
         </ImageBackground>

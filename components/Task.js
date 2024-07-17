@@ -1,23 +1,42 @@
 import { StyleSheet, Text, View, Pressable } from "react-native";
-import React from "react";
-import { AntDesign } from "@expo/vector-icons";
+import React, { useState } from "react";
+import { Feather } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 
 const Task = (props) => {
+  const [isChecked, setIsChecked] = useState(false);
+  const handleCheck = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <View style={styles.item}>
       <View style={styles.itemLeft}>
-        <Pressable onPress={() => alert("Coming soon!")}>
-          <AntDesign
-            name="dingding"
-            size={24}
-            color="white"
-            style={styles.check}
-          />
+        <Pressable onPress={handleCheck}>
+          {isChecked ? (
+            <FontAwesome
+              name="check-square-o"
+              size={25}
+              color="white"
+              style={styles.check}
+            />
+          ) : (
+            <Feather
+              name="square"
+              size={24}
+              color="white"
+              style={styles.check}
+            />
+          )}
         </Pressable>
-        <Text style={styles.itemText}>{props.text}</Text>
+        <Text style={isChecked ? styles.itemChecked : styles.itemText}>
+          {props.text}
+        </Text>
       </View>
-      <Ionicons name="close-sharp" size={24} color="white" />
+      <Pressable onPress={props.onDelete}>
+        <Ionicons name="close-sharp" size={24} color="white" />
+      </Pressable>
     </View>
   );
 };
@@ -50,6 +69,12 @@ const styles = StyleSheet.create({
   },
   check: {
     marginRight: 10,
+  },
+  itemChecked: {
+    textDecorationLine: "line-through",
+    fontSize: 15,
+    maxWidth: "80%",
+    color: "white",
   },
   itemText: {
     fontSize: 15,
